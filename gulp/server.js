@@ -26,7 +26,7 @@ function browserSyncInit(baseDir, browser) {
     routes: routes,
   };
 
-  server.middleware = proxyMiddleware('/api', {target: 'http://localhost:3000'});
+
   /*
    * You can add a proxy to your backend by uncommenting the line below.
    * You just have to configure a context which will we redirected and the target url.
@@ -34,7 +34,7 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.0.5/README.md
    */
-  // server.middleware = proxyMiddleware('/users', {target: 'http://jsonplaceholder.typicode.com', proxyHost: 'jsonplaceholder.typicode.com'});
+  server.middleware = proxyMiddleware('/api', {target: 'https://desolate-bayou-3246.herokuapp.com', changeOrigin: 'desolate-bayou-3246.herokuapp.com'});
 
   browserSync.instance = browserSync.init({
     startPath: '/',
