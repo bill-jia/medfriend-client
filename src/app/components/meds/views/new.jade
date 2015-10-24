@@ -1,2 +1,10 @@
 div.container-fluid
   |This is the new page.
+  form
+    div.form-group
+      label Name
+      input(type="text" placeholder="name" ng-model="med.name")
+    div.form-group
+      label Description
+      textarea(type="text" placeholder="description" ng-model="med.description")
+    button.btn.btn-primary(ng-click="save()") Add

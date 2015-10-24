@@ -1,4 +1,5 @@
 div.container-fluid
   |This is the index page.
   ul
-    li
+    li(ng-repeat="med in meds")
+      | {{med.name}} {{med.description}}
