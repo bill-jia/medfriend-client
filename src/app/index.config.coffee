@@ -10,4 +10,4 @@ angular.module 'evothingsapp'
     toastrConfig.preventDuplicates = true
     toastrConfig.progressBar = true
   .config (RestangularProvider) ->
-    RestangularProvider.setBaseUrl("/api")
+    RestangularProvider.setBaseUrl("https://desolate-bayou-3246.herokuapp.com/api")

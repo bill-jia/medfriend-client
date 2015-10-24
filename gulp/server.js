@@ -34,7 +34,7 @@ function browserSyncInit(baseDir, browser) {
    *
    * For more details and option, https://github.com/chimurai/http-proxy-middleware/blob/v0.0.5/README.md
    */
-  server.middleware = proxyMiddleware('/api', {target: 'https://desolate-bayou-3246.herokuapp.com', changeOrigin: 'desolate-bayou-3246.herokuapp.com'});
+  // server.middleware = proxyMiddleware('/api', {target: 'https://desolate-bayou-3246.herokuapp.com', changeOrigin: 'desolate-bayou-3246.herokuapp.com'});
 
   browserSync.instance = browserSync.init({
     startPath: '/',
