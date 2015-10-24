@@ -7,10 +7,14 @@ angular.module 'evothingsapp'
         name: "root"
         url: '/'
         templateUrl: 'app/main/main.html'
+      .state 'root.home'
+        name: "root.home"
+        url: ""
+        templateUrl: "app/main/home.html"
       .state "root.meds",
         abstract: true
         name: "root.meds"
-        url: ""
+        url: "/meds/index"
         template: "<ui-view/>"
       .state "root.meds.index",
         name: "root.meds.index"
@@ -19,7 +23,7 @@ angular.module 'evothingsapp'
         controller: "MedIndexController"
       .state "root.meds.new",
         name: "root.meds.new"
-        url: "/new"
+        url: "/meds/new"
         templateUrl: "app/components/meds/views/new.html"
         controller: "MedNewController"
 
