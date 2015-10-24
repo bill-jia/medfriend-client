@@ -1,39 +1,18 @@
-nav.navbar.navbar-default
-  .container-fluid
-    // Brand and toggle get grouped for better mobile display
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
     .navbar-header
-      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-banner', aria-expanded='false')
-        span.sr-only Toggle navigation
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(ui-sref=".meds.index") Meds
-        // Collect the nav links, forms, and other content for toggling
-    #main-banner.collapse.navbar-collapse
+      a.navbar-brand(href='') MedFriend
+    .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li
-          button.btn.btn-primary(type="button" ui-sref=".meds.new") Add
-          span.sr-only (current)
-        li
-          button.btn.btn-default.glyphicon.glyphicon-refresh(aria-hidden="true" alt="refresh" href="#")
-        li.dropdown
-          a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-            | Dropdown 
-            span.caret
-          ul.dropdown-menu
-            li
-              a(href='#') Action
-            li
-              a(href='#') Another action
-            li
-              a(href='#') Something else here
-            li.divider(role='separator')
-            li
-              a(href='#') Separated link
-            li.divider(role='separator')
-            li
-              a(href='#') One more separated link
-                li
-                  a(href='#') Separated link
+      form.navbar-form.navbar-right
+        .form-group
+          input.form-control(type='email', placeholder='email')
+        .form-group
+          input.form-control(type='password', placeholder='Password')
+        button.btn.btn-success(type='submit') Sign In
 div.container-fluid
   div(ui-view)

@@ -7,7 +7,7 @@ angular.module 'evothingsapp'
         name: "root"
         url: '/'
         templateUrl: 'app/main/main.html'
-      .state 'root.home'
+      .state 'root.home',
         name: "root.home"
         url: ""
         templateUrl: "app/main/home.html"
