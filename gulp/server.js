@@ -3,7 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-
+var exec = require('child_process').exec;
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
 
@@ -23,9 +23,10 @@ function browserSyncInit(baseDir, browser) {
 
   var server = {
     baseDir: baseDir,
-    routes: routes
+    routes: routes,
   };
 
+  server.middleware = proxyMiddleware('/api', {target: 'http://localhost:3000'});
   /*
    * You can add a proxy to your backend by uncommenting the line below.
    * You just have to configure a context which will we redirected and the target url.
@@ -38,7 +39,8 @@ function browserSyncInit(baseDir, browser) {
   browserSync.instance = browserSync.init({
     startPath: '/',
     server: server,
-    browser: browser
+    browser: browser,
+    port: 9000
   });
 }
 
@@ -50,6 +52,9 @@ gulp.task('serve', ['watch'], function () {
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
 
+gulp.task('rails', function() {
+  exec("cd ../railsapp && rails server");
+});
 gulp.task('serve:dist', ['build'], function () {
   browserSyncInit(conf.paths.dist);
 });
@@ -61,3 +66,5 @@ gulp.task('serve:e2e', ['inject'], function () {
 gulp.task('serve:e2e-dist', ['build'], function () {
   browserSyncInit(conf.paths.dist, []);
 });
+
+gulp.task('serve:full-stack', ['rails', 'serve']);
