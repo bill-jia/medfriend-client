@@ -53,7 +53,7 @@ gulp.task('serve', ['watch'], function () {
 });
 
 gulp.task('rails', function() {
-  exec("cd ../railsapp && rails server");
+  exec("cd ../medfriend-api && rails server");
 });
 gulp.task('serve:dist', ['build'], function () {
   browserSyncInit(conf.paths.dist);
