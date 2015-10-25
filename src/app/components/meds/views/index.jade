@@ -32,9 +32,9 @@
         th(ng-if="med.edit")
           button.btn.btn-success.btn-small(ng-click="update($index)") Save
           form(ng-if="med.edit")
-            input(ng-if="med.edit").form-control(type='text', placeholder='Medication' ng-model="med.name")
+            input.form-control(ng-if="med.edit" type='text', placeholder='Medication' ng-model="med.name")
             th(ng-if="med.edit")
-              input(ng-if="med.edit").form-control(type='text', placeholder='med.edit' ng-model="med.description")
+              input.form-control(ng-if="med.edit" type='text', placeholder='med.edit' ng-model="med.description")
             th(ng-if="med.edit")
               .form-group(ng-if="med.edit")
                 select#remindChoice.form-control(ng-model="med.reminder_on")
