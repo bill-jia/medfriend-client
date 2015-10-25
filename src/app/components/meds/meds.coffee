@@ -41,6 +41,13 @@ app.controller("MedIndexController", ["$scope", "$rootScope", "$state", "MedServ
 
       if ($scope.lastName != nextName || timeDifference > 5500)
         $scope.scheduleSingleNotification(nextName, "last signal: " + timeDifference)
+        if (nextName == "Bottle_Open")
+          $scope.meds[0].last_opened = $scope.currBottleDetected
+          $scope.lastName = nextName
+          MedService.updateMed($scope.meds[0]).then(() ->
+            $scope.scheduleSingleNotification("Last opening pushed to server", $scope.currBottleDetected)
+            $state.go("root.meds.index")
+          )
         $scope.lastName = nextName
         console.log "MEDFRIEND name to be saved: " + $scope.lastName
     )
