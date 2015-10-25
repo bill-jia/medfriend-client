@@ -1,5 +1,60 @@
-div.container-fluid
-  |This is the index page.
-  ul
-    li(ng-repeat="med in meds")
-      | {{med.name}} {{med.description}}
+#indexTopContainer.centered
+  .col-md-8.col-xs-12.padLeft
+    h1 My Medications
+    p Set medication reminders and notifications.
+    p Effortlessly.
+  .col-md-4.col-xs-6
+    br
+    button.btn.btn-lg.btn-success(type='submit') Update
+#medTable.container
+  table.table.table-striped
+    thead
+      tr
+        th
+          button.btn.btn-small.btn-success(type='submit') Add
+        th Medication
+        th Description
+        th Reminder
+        th Time
+        th Open Alert
+    tbody
+      tr(ng-repeat="med in meds")
+        td
+          button.btn.btn-small.glyphicon.glyphicon-pencil.padRight
+          button.btn.btn-small.span.glyphicon.glyphicon-trash(ng-click="delete($index)")
+        th {{med.name}}
+        th {{med.description}}
+        th
+          span.glyphicon.glyphicon-ok(ng-if="med.reminder_on")
+        th {{med.openinterval}}
+        th
+          span.glyphicon.glyphicon-ok(ng-if="med.reminder_on")
+      tr
+        td
+          button.btn.btn-success.btn-small(ng-click="save()") Save
+        th
+          form
+            input.form-control(type='text', placeholder='Medication' ng-model="newMed.name")
+            th
+              input.form-control(type='text', placeholder='Description' ng-model="newMed.description")
+            th
+              .form-group
+                select#remindChoice.form-control(ng-model="newMed.reminder_on")
+                  option(value="{{true}}") Yes
+                  option(value="{{false}}") No
+            th
+              .form-group
+                select#remindChoice.form-control(ng-model="newMed.openinterval")
+                  option(value="{{6}}") 6 hours
+                  option(value="{{8}}") 8 hours
+                  option(value="{{24}}") 1 day
+                  option(value="{{48}}") 2 days
+                  option(value="{{168}}") 1 week
+            th
+              .form-group
+                select#alertChoice.form-control(ng-model="newMed.open_alert")
+                  option(value="{{true}}") Yes
+                  option(value="{{false}}") No
+#footer.row.padLeft
+  hr
+  p &copy MedFriend 2015

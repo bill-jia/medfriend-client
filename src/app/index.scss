@@ -31,11 +31,20 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   font-size:1.1em;
 }
 
-#topContainer {
+#landingTopContainer {
   background-image:url("/assets/images/sunsetsky.jpeg");
   height:450px;
   width:100%;
   background-size:cover;
+
+}
+
+#indexTopContainer {
+  background-image:url("/assets/images/sunsetsky.jpeg");
+  background-size:cover;
+  height: 200px;
+  width:100%;
+  margin-top: 50px;
 
 }
 
@@ -108,7 +117,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   margin-top:60px;
 }
 
-.container-fluid {
+.container{
+  padding-right: 0px;
+}
+
+.container-fluid{
   padding-left: 0px;
   padding-right: 0px;
 }
