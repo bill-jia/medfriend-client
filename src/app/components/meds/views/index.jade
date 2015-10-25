@@ -20,15 +20,39 @@
     tbody
       tr(ng-repeat="med in meds")
         td
-          button.btn.btn-small.glyphicon.glyphicon-pencil.padRight
+          button.btn.btn-small.glyphicon.glyphicon-pencil.padRight(ng-click="flipEdit($index)")
           button.btn.btn-small.span.glyphicon.glyphicon-trash(ng-click="delete($index)")
-        th {{med.name}}
-        th {{med.description}}
-        th
+        th(ng-if="!med.edit") {{med.name}}
+        th(ng-if="!med.edit")  {{med.description}}
+        th(ng-if="!med.edit") 
           span.glyphicon.glyphicon-ok(ng-if="med.reminder_on")
-        th {{med.openinterval}}
-        th
+        th(ng-if="!med.edit") {{med.openinterval}}
+        th(ng-if="!med.edit")
           span.glyphicon.glyphicon-ok(ng-if="med.reminder_on")
+        th(ng-if="med.edit")
+          button.btn.btn-success.btn-small(ng-click="update($index)") Save
+          form(ng-if="med.edit")
+            input(ng-if="med.edit").form-control(type='text', placeholder='Medication' ng-model="med.name")
+            th(ng-if="med.edit")
+              input(ng-if="med.edit").form-control(type='text', placeholder='med.edit' ng-model="med.description")
+            th(ng-if="med.edit")
+              .form-group(ng-if="med.edit")
+                select#remindChoice.form-control(ng-model="med.reminder_on")
+                  option(value="{{true}}") Yes
+                  option(value="{{false}}") No
+            th(ng-if="med.edit")
+              .form-group(ng-if="med.edit")
+                select#remindChoice.form-control(ng-model="med.openinterval")
+                  option(value="{{6}}") 6 hours
+                  option(value="{{8}}") 8 hours
+                  option(value="{{24}}") 1 day
+                  option(value="{{48}}") 2 days
+                  option(value="{{168}}") 1 week
+            th(ng-if="med.edit")
+              .form-group(ng-if="med.edit")
+                select#alertChoice.form-control(ng-model="med.open_alert")
+                  option(value="{{true}}") Yes
+                  option(value="{{false}}") No
       tr
         td
           button.btn.btn-success.btn-small(ng-click="save()") Save
