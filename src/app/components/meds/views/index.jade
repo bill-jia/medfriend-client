@@ -3,6 +3,9 @@
     h1 My Medications
     p Set medication reminders and notifications.
     p Effortlessly.
+    p {{device.name}} {{interrupted}}
+    button.btn.btn-primary(ng-click="scanBT()") Scan
+    
   .col-md-4.col-xs-6
     br
     button.btn.btn-lg.btn-success(type='submit') Update
