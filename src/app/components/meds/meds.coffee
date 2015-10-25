@@ -19,32 +19,14 @@ app.controller("MedIndexController", ["$scope", "$rootScope", "$state", "MedServ
         data: {}
       }).then(() ->)
 
-    $scope.scanBT = () ->
-      $scope.lastBottleDetected = 0
-      $scope.currBottleDetected = 0
-      $scope.lastName = ""
-      $scope.deviceFound = false
-      $scope.loopBTScan()
-
-    $scope.loopBTScan = () ->
-      console.log "Loop begins"
-      document.addEventListener("deviceready", () ->
-          ble.startScan(['0000'+'0010'+'-0000-1000-8000-00805F9B34FB'], (device)->
-            onBottleFound.broadcast(new Date(), device.name)
-            ble.stopScan(
-              () -> $scope.loopBTScan()
-            )
-          )
-      )
-
     $scope.$on("bottlefound", (e, nextDate, nextName) ->
       console.log "MEDFRIEND next date " + nextDate
       console.log "MEDFRIEND next name " + nextName
-      if $scope.lastBottleDetected == 0
+      if !$scope.lastBottleDetected
         $scope.lastBottleDetected = nextDate
       else
         $scope.lastBottleDetected = $scope.currBottleDetected
-      if $scope.currBottleDetected == 0
+      if !$scope.currBottleDetected
         $scope.currBottleDetected = $scope.lastBottleDetected
       else
         $scope.currBottleDetected = nextDate
@@ -52,7 +34,7 @@ app.controller("MedIndexController", ["$scope", "$rootScope", "$state", "MedServ
       console.log "MEDFRIEND last bottle date: " + $scope.lastBottleDetected
 
       console.log "MEDFRIEND curr bottle date: " + $scope.currBottleDetected
-      if $scope.lastBottleDetected != 0
+      if $scope.lastBottleDetected
         timeDifference = ($scope.currBottleDetected).getTime() - ($scope.lastBottleDetected).getTime()
         console.log "MEDFRIEND time diff: " + timeDifference
         # $scope.device = device
