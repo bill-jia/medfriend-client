@@ -5,7 +5,6 @@ angular.module 'evothingsapp',
   'ngSanitize',
   'ngMessages',
   'ngAria',
-  'ngCordova',
   'restangular',
   'ui.router',
   'toastr']
